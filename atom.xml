@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://oui123.github.io/</id>
+    <title>ouis</title>
+    <updated>2020-10-28T00:52:48.214Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://oui123.github.io/"/>
+    <link rel="self" href="https://oui123.github.io/atom.xml"/>
+    <subtitle>未有知而不行者。知而不行，只是未知。</subtitle>
+    <logo>https://oui123.github.io/images/avatar.png</logo>
+    <icon>https://oui123.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, ouis</rights>
+    <entry>
+        <title type="html"><![CDATA[未有知而不行者。知而不行，只是未知。]]></title>
+        <id>https://oui123.github.io/post/wei-you-zhi-er-bu-xing-zhe-zhi-er-bu-xing-zhi-shi-wei-zhi/</id>
+        <link href="https://oui123.github.io/post/wei-you-zhi-er-bu-xing-zhe-zhi-er-bu-xing-zhi-shi-wei-zhi/">
+        </link>
+        <updated>2020-10-28T00:49:03.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[iOS14 WidgetKit开发报错:Type 'Provider' does not conform to protocol 'IntentTimelineProvider']]></title>
+        <id>https://oui123.github.io/post/ios14-widgetkit-shang-shou-di-yi-keng/</id>
+        <link href="https://oui123.github.io/post/ios14-widgetkit-shang-shou-di-yi-keng/">
+        </link>
+        <updated>2020-09-22T09:51:35.000Z</updated>
+        <content type="html"><![CDATA[<p>运行报错提示<br>
+1、Type 'Provider' does not conform to protocol 'IntentTimelineProvider'<br>
+2、Cannot find 'ConfigurationIntent' in scope</p>
+<pre><code>Type 'Provider' does not conform to protocol 'IntentTimelineProvider'
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://oui123.github.io//post-images/1600768618607.png" alt="" loading="lazy"></figure>
+<p>原因是工程中设置了Class Prefix，我的Demo设置的是OK<br>
+<img src="https://oui123.github.io//post-images/1600768812771.png" alt="" loading="lazy"></p>
+<p>导致Xcode自动生成的是OKConfigurationIntent.swift，该文件路径为</p>
+<pre><code>/Users/用户名/Library/Developer/Xcode/DerivedData/项目名称/Build/Intermediates.noindex/项目名称.build/Debug-iphonesimulator/widget的名称Extension.build/DerivedSources/IntentDefinitionGenerated/widget的名称/OKConfigurationIntent.swift
+</code></pre>
+<p>现在用的模拟器运行，所以路径会对应为Debug-iphonesimulator</p>
+<p><img src="https://oui123.github.io//post-images/1600769555334.png" alt="" loading="lazy"><br>
+<img src="https://oui123.github.io//post-images/1600829328026.png" alt="" loading="lazy"><br>
+但是自动生成的代码又是ConfigurationIntent，只需要把代码中的ConfigurationIntent都改为工程前缀+ConfigurationIntent(OKConfigurationIntent)就可以正常运行了<br>
+<img src="https://oui123.github.io//post-images/1600769766170.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+</feed>
